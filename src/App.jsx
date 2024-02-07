@@ -24,7 +24,11 @@ function App() {
     e.preventDefault();
     const message = {
       action: "sendMessage",
-      message: data
+      message: {
+        ...data,
+        matricula: data.matricula === '' ? 'U99344350' : data.matricula,
+        email: data.email === '' ? 'm.resendizmartinez2@my.ula.edu.mx' : data.email,
+      }
     };
     ws.send(JSON.stringify(message));
     ws.onmessage = (event) => {
