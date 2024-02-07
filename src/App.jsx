@@ -21,6 +21,9 @@ function App() {
   }, []);
 
   const sendData = (e) => {
+    ws.onopen = () => {
+      console.log("Conexion establecida");
+    };
     e.preventDefault();
     const message = {
       action: "sendMessage",
@@ -35,6 +38,9 @@ function App() {
       setMessages((prev) => [...prev, event.data]); 
     };
   };
+  ws.close(()=>{
+    console.log("Conexion cerrada")
+  })
 
   return (
     <>
