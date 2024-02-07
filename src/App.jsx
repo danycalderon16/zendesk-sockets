@@ -37,10 +37,10 @@ function App() {
     ws.onmessage = (event) => {
       setMessages((prev) => [...prev, event.data]); 
     };
+    ws.close(()=>{
+      console.log("Conexion cerrada")
+    })
   };
-  ws.close(()=>{
-    console.log("Conexion cerrada")
-  })
 
   return (
     <>
